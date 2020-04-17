@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.thirdlucky</groupId>
+    <artifactId>dependencies</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>thirdlucky</id>
+            <name>Shen Jizhe</name>
+            <email>thirdlucky@126.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/shenjizhe/spring-cloud-framework</url>
+        <connection>
+            scm:git:git@github.com:shenjizhe/spring-cloud-framework.git
+        </connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <spring-cloud.group>com.alibaba.cloud</spring-cloud.group>
+        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
+
+        <dubbo.version>2.7.2</dubbo.version>
+        <dubbo-kryo.version>2.7.2</dubbo-kryo.version>
+        <dubbo-actuator.version>2.7.1</dubbo-actuator.version>
+        <alibaba-spring-context-suppert.version>1.0.2</alibaba-spring-context-suppert.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--            https://github.com/alibaba/spring-cloud-alibaba-->
+            <dependency>
+                <groupId>${spring-cloud.group}</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-actuator</artifactId>
+                <version>${dubbo-actuator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.spring</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${alibaba-spring-context-suppert.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-serialization-kryo</artifactId>
+                <version>${dubbo-kryo.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+<!--        TODO:需要替换私服地址-->
+<!--        <distributionManagement>-->
+<!--            <repository>-->
+<!--                <id>nexus-releases</id>-->
+<!--                <name>nexus release repository</name>-->
+<!--                <url>http://192.168.227.135:8082/repository/maven-releases/</url>-->
+<!--            </repository>-->
+<!--            <snapshotRepository>-->
+<!--                <id>nexus-snapshots</id>-->
+<!--                <name>nexus snapshot repository</name>-->
+<!--                <url>http://192.168.227.135:8082/repository/maven-snapshots/</url>-->
+<!--            </snapshotRepository>-->
+<!--        </distributionManagement>-->
+
+    <repositories>
+        <repository>
+            <id>apache.releases.https</id>
+            <name>Apache Development Release Repository</name>
+            <url>https://repository.apache.org/content/repositories/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>apache.snapshots.https</id>
+            <name>Apache Development Snapshot Repository</name>
+            <url>https://repository.apache.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>spring-milestone</id>
+            <name>Spring Milestone</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshot</id>
+            <name>Spring Snapshot</name>
+            <url>https://repo.spring.io.snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestone</id>
+            <name>Spring Milestone</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-snapshot</id>
+            <name>Spring Snapshot</name>
+            <url>https://repo.spring.io.snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

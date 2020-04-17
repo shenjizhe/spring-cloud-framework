@@ -39,3 +39,5 @@
 ## 1.注册中心（nacos discover）
 ## 2.配置中心（nacos ）
 ## 3.授权中心（security）
+
+## 4. API网关( gateway )
