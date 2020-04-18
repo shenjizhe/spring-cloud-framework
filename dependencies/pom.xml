@@ -3,6 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thirdlucky</groupId>
+    <!--    TODO:需要替换工程名-->
     <artifactId>dependencies</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -22,23 +23,19 @@
         </developer>
     </developers>
 
-    <scm>
-        <url>https://github.com/shenjizhe/spring-cloud-framework</url>
-        <connection>
-            scm:git:git@github.com:shenjizhe/spring-cloud-framework.git
-        </connection>
-        <tag>HEAD</tag>
-    </scm>
-
     <properties>
-        <spring-cloud.group>com.alibaba.cloud</spring-cloud.group>
-        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
-
         <dubbo.version>2.7.2</dubbo.version>
         <dubbo-kryo.version>2.7.2</dubbo-kryo.version>
         <dubbo-actuator.version>2.7.1</dubbo-actuator.version>
         <alibaba-spring-context-suppert.version>1.0.2</alibaba-spring-context-suppert.version>
+
+        <!--        <spring-cloud.group>org.springframework.cloud</spring-cloud.group>-->
+        <!--        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>-->
+        <!--        <spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>-->
+        <spring-cloud.group>com.alibaba.cloud</spring-cloud.group>
+        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-boot-mapper.version>2.1.5</spring-boot-mapper.version>
     </properties>
 
     <dependencyManagement>
@@ -50,7 +47,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--            https://github.com/alibaba/spring-cloud-alibaba-->
+
             <dependency>
                 <groupId>${spring-cloud.group}</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -90,27 +87,32 @@
                 <artifactId>spring-context-support</artifactId>
                 <version>${alibaba-spring-context-suppert.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-serialization-kryo</artifactId>
                 <version>${dubbo-kryo.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${spring-boot-mapper.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-<!--        TODO:需要替换私服地址-->
-<!--        <distributionManagement>-->
-<!--            <repository>-->
-<!--                <id>nexus-releases</id>-->
-<!--                <name>nexus release repository</name>-->
-<!--                <url>http://192.168.227.135:8082/repository/maven-releases/</url>-->
-<!--            </repository>-->
-<!--            <snapshotRepository>-->
-<!--                <id>nexus-snapshots</id>-->
-<!--                <name>nexus snapshot repository</name>-->
-<!--                <url>http://192.168.227.135:8082/repository/maven-snapshots/</url>-->
-<!--            </snapshotRepository>-->
-<!--        </distributionManagement>-->
+    <!--    TODO:需要替换私服地址-->
+    <!--    <distributionManagement>-->
+    <!--        <repository>-->
+    <!--            <id>nexus-releases</id>-->
+    <!--            <name>nexus release repository</name>-->
+    <!--            <url>http://192.168.227.135:8082/repository/maven-releases/</url>-->
+    <!--        </repository>-->
+    <!--        <snapshotRepository>-->
+    <!--            <id>nexus-snapshots</id>-->
+    <!--            <name>nexus snapshot repository</name>-->
+    <!--            <url>http://192.168.227.135:8082/repository/maven-snapshots/</url>-->
+    <!--        </snapshotRepository>-->
+    <!--    </distributionManagement>-->
 
     <repositories>
         <repository>

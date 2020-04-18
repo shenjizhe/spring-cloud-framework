@@ -9,22 +9,17 @@
         <relativePath/>
     </parent>
     <groupId>com.thirdlucky</groupId>
+    <!--    TODO:需要替换工程名-->
     <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>dependencies</module>
+        <module>common</module>
         <module>gateway</module>
         <module>auth-service</module>
     </modules>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-    </dependencies>
 
     <properties>
         <java.version>1.8</java.version>
@@ -48,6 +43,14 @@
             <email>thirdlucky@126.com</email>
         </developer>
     </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.thirdlucky</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
